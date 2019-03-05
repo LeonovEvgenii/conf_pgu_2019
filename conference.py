@@ -5,27 +5,25 @@ import sys
 from get_definition import get_definition
 from get_keywords import get_keywords
 
-def get_graph(definition = "Дерево", n = 0):	
-	if n == 5:
-		sys.exit()
+def get_graph(definition = "Дерево", n = 2):	
+	if n > 0:
+		definition_text = get_definition(definition)	
+		
+		keywords = get_keywords(definition_text)
 
-	definition_text = get_definition(definition)	
-	
-	keywords = get_keywords(definition_text)
+		keywords = [ k.replace(' ', '_') for k in keywords ]
 
-	i=0
-	while i<len(keywords):
-		keywords[i] = keywords[i].replace(" ", "_")
-		i = i+1
+		for keyword in keywords:
+			# print("associate['%s'] = '%s'" % (definition, keyword))
+			print("+(associate['%s'] == '%s')" % (definition, keyword))
+			# +(manager['Tom']  == 'Mary')
 
-	# print(keywords)
+			get_graph(keyword, n - 1)
 
-	for definition in keywords:
-		n = n+1
-		# print(definition)
-		get_graph(definition, n)
+		# dic = {}
+
 
 if __name__ == '__main__':
-	get_graph("Дерево", 2)
+	get_graph("дерево", 2)
 	#graph = get_graph(definition = "дерево")
 	# понятие -> понятие2

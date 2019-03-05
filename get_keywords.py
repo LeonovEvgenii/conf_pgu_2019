@@ -1,15 +1,9 @@
 # -*- coding: utf-8 -*-
+from rutermextract import TermExtractor
 
 def get_keywords(text = ""):
-	from rutermextract import TermExtractor
 	term_extractor = TermExtractor()
-	text_local = text
-	myList = []
-	for term in term_extractor(text_local):
-		myList.append(term.normalized)
-		#print(term.normalized, term.count)
-	#print(myList)
-	return myList
+	return [ _.normalized for _ in term_extractor(text) if len(_.normalized) > 3 ][0:10]
 
 if __name__ == '__main__':
 	get_keywords("несогласованное использование табуляции и пробелов в отступах")

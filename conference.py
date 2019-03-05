@@ -15,15 +15,13 @@ def get_graph(definition = "Дерево", n = 2):
 
 		for keyword in keywords:
 			# print("associate['%s'] = '%s'" % (definition, keyword))
-			print("+(associate['%s'] == '%s')" % (definition, keyword))
-			# +(manager['Tom']  == 'Mary')
+			# print("+(associate['%s'] == '%s')" % (definition, keyword))
+			# print("+ associate('%s', '%s')" % (definition, keyword))
+
+			print("+ associate('%s', '%s'), %s" % (definition, keyword, n))
 
 			get_graph(keyword, n - 1)
 
-		# dic = {}
-
-
 if __name__ == '__main__':
 	get_graph("дерево", 2)
-	#graph = get_graph(definition = "дерево")
-	# понятие -> понятие2
+	

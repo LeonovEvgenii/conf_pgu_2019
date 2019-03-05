@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+#!/usr/bin/env python -B
 
 def get_wiki_definition(definition = "Дерево"):
 	

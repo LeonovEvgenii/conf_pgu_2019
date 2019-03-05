@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+#!/usr/bin/env python -B
 from rutermextract import TermExtractor
 
 def get_keywords(text = ""):

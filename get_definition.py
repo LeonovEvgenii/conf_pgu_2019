@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+#!/usr/bin/env python -B
 
 from get_wiki_definition import get_wiki_definition
 

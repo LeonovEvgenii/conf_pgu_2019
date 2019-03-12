@@ -1,5 +1,6 @@
 from pyDatalog import pyDatalog
-pyDatalog.create_terms('X,Y,Z, associate, link_2_level')
+
+pyDatalog.create_terms('X,Y,Z, associate, can_reach')
 
 + associate('дерево', 'латы')
 + associate('латы', 'металлические_пластины')
@@ -100,6 +101,13 @@ pyDatalog.create_terms('X,Y,Z, associate, link_2_level')
 
 if __name__ == '__main__':
 	# print(len_(associate(X, Y)), X=='дерево')
-	link_2_level(X, Y) <= (associate(X, Z) & associate(Z, Y))
-
-	print(link_2_level('дерево', Y))
+	import sys
+	# import logging
+	# from pyDatalog import pyEngine
+	# pyEngine.Logging = True
+	# logging.basicConfig(level=logging.INFO)
+	associate(X, Y) <= associate(Y, X)
+	can_reach(X, Y) <= associate(X, Y)
+	can_reach(X, Y) <= (can_reach(X, Z) & can_reach(Z, Y) & (X != Y))
+	# can_reach(X, Y) <= (can_reach(X, Z) & can_reach(Z, Y) & (X != Y) & (len_(Y) < 2))
+	print(can_reach(sys.argv[1], Y))

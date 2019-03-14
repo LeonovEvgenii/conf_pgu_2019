@@ -1,10 +1,11 @@
 from pyDatalog import pyDatalog
 
-pyDatalog.create_terms('X,Y,Z, associate, can_reach')
+pyDatalog.create_terms('X,Y,Z,N, associate, can_reach')
 
-+ associate('дерево', 'латы')
-+ associate('латы', 'металлические_пластины')
-+ associate('латы', 'нагрудник')
+# + associate('дерево', 'латы')
+# + associate('латы', 'металлические_пластины')
+# + associate('латы', 'нагрудник')
+
 # + associate('латы', 'лата')
 # + associate('латы', 'конец')
 # + associate('латы', 'форма_частей_тела_воина')
@@ -22,7 +23,9 @@ pyDatalog.create_terms('X,Y,Z, associate, can_reach')
 # + associate('листы', 'википедия')
 # + associate('дерево', 'дерево')
 # + associate('дерево', 'латы')
-+ associate('дерево', 'листы')
+
+# + associate('дерево', 'листы')
+
 # + associate('дерево', 'дерево')
 # + associate('дерево', 'высота')
 # + associate('дерево', 'дерева')
@@ -98,16 +101,56 @@ pyDatalog.create_terms('X,Y,Z, associate, can_reach')
 # + associate('цветки', 'цветоложе')
 # + associate('цветки', 'пестик')
 
++ associate('q', 'w')
++ associate('w', 'e')
++ associate('e', 'r')
++ associate('r', 't')
++ associate('t', 'y')
+
 
 if __name__ == '__main__':
-	# print(len_(associate(X, Y)), X=='дерево')
 	import sys
 	# import logging
 	# from pyDatalog import pyEngine
 	# pyEngine.Logging = True
 	# logging.basicConfig(level=logging.INFO)
-	associate(X, Y) <= associate(Y, X)
-	can_reach(X, Y) <= associate(X, Y)
-	can_reach(X, Y) <= (can_reach(X, Z) & can_reach(Z, Y) & (X != Y))
-	# can_reach(X, Y) <= (can_reach(X, Z) & can_reach(Z, Y) & (X != Y) & (len_(Y) < 2))
-	print(can_reach(sys.argv[1], Y))
+	
+	can_reach(X, Y, N) <= associate(X, Y) & (N>0)
+	can_reach(X, Y, 1) <= associate(X, Y)
+
+	can_reach(X, Y, N) <= (can_reach(X, Z, N-1) & can_reach(Z, Y, N-1) & (X != Y) & N>0)
+	
+	print(can_reach('q', Y, 3))
+
+
+
+
+
+
+
+##################
+
+	# associate(X, Y) <= associate(Y, X)
+	
+	# can_reach(X, Y) <= associate(X, Y)
+
+	# can_reach(X, Y, N) <= (can_reach(X, Z, N-1) & can_reach(Z, Y, N-1) & (X != Y))
+	# print(can_reach(sys.argv[1], Y, 3))
+
+######################
+
+
+
+
+
+
+
+
+
+
+
+	# associate(X, Y, N) <= (len_(associate(X, Y))==N)
+	# can_reach(X, Y, N) <= associate(X, Y) & N==N-1
+	# can_reach(X, Y, 0) <= (X=='x' & Y=='y')
+
+		# print(len_(associate(X, Y)), X=='дерево')

@@ -13,19 +13,25 @@ class Associate(pyDatalog.Mixin):
     def __repr__(self):
         return self.name
 
-q = Associate('q', None)
-w = Associate('w', q)
-e = Associate('e', w)
+# q = Associate('q', None)
+# w = Associate('w', q)
+# e = Associate('e', w)
 # r = Associate('r', e)
 # t = Associate('t', r)
 # y = Associate('y', t)
 
+дерево = Associate('дерево', None)
+латы = Associate('латы', дерево)
+листы = Associate('листы', дерево)
+металлические_пластины = Associate('металлические_пластины', латы)
+нагрудник = Associate('нагрудник', латы)
 
 
 Associate.indirect_manager(X,Y, N) <= (Associate.bind[X]==Y) & (Y != None) & (N>0)
 Associate.indirect_manager(X,Y, N) <= (Associate.bind[X]==Z) & Associate.indirect_manager(Z,Y, N-1) & (Y != None) & (N>0)
 
-print(Associate.indirect_manager(X,Y, int(sys.argv[1])))
+print(Associate.indirect_manager(X, дерево, 1))
+print(Associate.indirect_manager(листы, Y, 1))
 
 
 # Employee.indirect_manager(X,Y) <= (Employee.manager[X]==Y) & (Y != None)

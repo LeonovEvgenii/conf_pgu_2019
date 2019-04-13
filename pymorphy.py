@@ -3,16 +3,19 @@ from rutermextract import TermExtractor
 from pprint import pprint
 
 
-input_str = 'Что такое дерево'
+def parse_question(question = 'Из чего состоит дерево'):
 
-term_extractor = TermExtractor()
+	term_extractor = TermExtractor()
 
-rte = [ _.normalized for _ in term_extractor(input_str) ]
+	rte = [ _.normalized for _ in term_extractor(question) ]
 
+	# print(rte)
 
-morph = pymorphy2.MorphAnalyzer()
+	morph = pymorphy2.MorphAnalyzer()
 
-pm = [ morph.parse(_) for _ in rte ]
+	pm = [ morph.parse(_) for _ in rte ]
 
-pprint(pm[0])
+	# pprint(pm[0][0][0])
+
+	return pm[0][0][0]
 

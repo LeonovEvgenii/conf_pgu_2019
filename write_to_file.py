@@ -1,4 +1,4 @@
-
+import os
 
 def write_to_file(prototype_objects):
 	f = open('graph.py', 'w')
@@ -29,15 +29,5 @@ class Associate(pyDatalog.Mixin):
 		# print(i)
 		f.write("%s = Associate('%s', %s)\n" % (i[1], i[1], i[0]))
 
-	footer = """
-Associate.indirect_manager(X,Y, N) <= (Associate.bind[X]==Y) & (Y != None) & (N>0)
-Associate.indirect_manager(X,Y, N) <= (Associate.bind[X]==Z) & Associate.indirect_manager(Z,Y, N-1) & (Y != None) & (N>0)
-
-print(Associate.indirect_manager(X, Y, 1))
-"""
-
-	f.write(footer)
-
 	f.close()
 
-	# os.system('python3 graph.py')

@@ -1,6 +1,6 @@
 import os
 
-def write_to_file(prototype_objects):
+def write_to_file(prototype_objects, main_word):
 	f = open('graph.py', 'w')
 
 	head = ("""
@@ -23,7 +23,7 @@ class Associate(pyDatalog.Mixin):
 
 	f.write(head)
 
-	f.write("дерево = Associate('дерево', None)\n")
+	f.write("%s = Associate('%s', None)\n" % (main_word, main_word))
 
 	for i in prototype_objects:
 		# print(i)

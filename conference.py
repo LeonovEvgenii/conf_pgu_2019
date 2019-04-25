@@ -31,18 +31,21 @@ if __name__ == '__main__':
 	prototype_objects = []
 
 	# получение с википедии
-	# for x in get_graph("дерево", 2):
-	# 	prototype_objects.append(x)
+	for x in get_graph("дерево", 2):
+		prototype_objects.append(x)
 	
 	# конвертер из файла
-	prototype_objects = converter('школа.dot')
+	# prototype_objects = converter('школа.dot')
 
 	# print(prototype_objects)
 
-	write_to_file(prototype_objects, 'школа')
+	# write_to_file(prototype_objects, 'школа')
+	write_to_file(prototype_objects, 'дерево')
 
-	# term = parse_question('Из чего состоит дерево')
-	term = parse_question('Где изучают историю и не изучают музыку')
+	term = parse_question('Из чего состоит дерево')
+	# term = parse_question('Где изучают историю и не изучают музыку')
 
-	# ask_question(term)
+	# print(term)
+
+	ask_question(term)
 	# ask_question('история')

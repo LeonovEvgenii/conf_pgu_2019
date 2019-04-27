@@ -34,6 +34,5 @@ class Associate(pyDatalog.Mixin):
 Associate.indirect_vertex(X,Y, N) <= (Associate.bind[X]==Y) & (Y != None) & (N>0)
 Associate.indirect_vertex(X,Y, N) <= (Associate.bind[X]==Z) & Associate.indirect_vertex(Z,Y, N-1) & (Y != None) & (N>0)
 
-print(Associate.indirect_vertex(X, побеги, 2))
-
-
+print(Associate.indirect_vertex(X, ягода, 2))
+print(Associate.indirect_vertex(ягода, Y, 2))

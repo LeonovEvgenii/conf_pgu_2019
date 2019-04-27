@@ -10,9 +10,10 @@ Associate.indirect_vertex(X,Y, N) <= (Associate.bind[X]==Y) & (Y != None) & (N>0
 Associate.indirect_vertex(X,Y, N) <= (Associate.bind[X]==Z) & Associate.indirect_vertex(Z,Y, N-1) & (Y != None) & (N>0)
 
 print(Associate.indirect_vertex(X, %s, %s))
+print(Associate.indirect_vertex(%s, Y, %s))
+""" % (term, level, term, level)
 
-
-""" % (term, level)
+# """ % (term, level)
 
 # print(Associate.indirect_vertex(%s, Y, %s))
 # """ % (term, level, term, level)

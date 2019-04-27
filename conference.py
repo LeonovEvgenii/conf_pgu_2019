@@ -10,6 +10,7 @@ from pprint import pprint
 from ask_question import ask_question
 from converter import converter
 from print_dot import print_dot
+import sys
 
 
 def get_graph(definition = "Дерево", n = 2):
@@ -32,23 +33,23 @@ if __name__ == '__main__':
 	prototype_objects = []
 
 	# получение с википедии
-	for x in get_graph("дерево", 2):
-		prototype_objects.append(x)
+	# for x in get_graph("дерево", 2):
+	# 	prototype_objects.append(x)
 	
 	# конвертер из файла
 	prototype_objects = converter('graph_for_article.dot')
 
-	print(prototype_objects)
+	# print(prototype_objects)
 
 	# print_dot(prototype_objects)
 
 	# write_to_file(prototype_objects, 'школа')
 	write_to_file(prototype_objects, 'дерево')
 
-	term = parse_question('Из чего состоит дерево')
+	# term = parse_question('Из чего состоит побеги')
+	# term = parse_question('Из чего состоит лепестки')
 	# term = parse_question('Где изучают историю и не изучают музыку')
 
-	# print(term)
-
-	ask_question(term)
+	# ask_question(term, 5)
+	ask_question(sys.argv[1], sys.argv[2])
 	# ask_question('история')

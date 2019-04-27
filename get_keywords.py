@@ -33,10 +33,14 @@ def get_keywords(text = ""):
     max_count = terms[0].count
     for term in terms:
 
-        if (i>10):
+        if (i>30):
             return
 
         i+=1
+
+        # print(term)
+        # print(term.count)
+        # print(max_count)
 
         if term.count >= max_count / 10:
             yield term.normalized 

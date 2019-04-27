@@ -9,6 +9,7 @@ from pymorphy import parse_question
 from pprint import pprint
 from ask_question import ask_question
 from converter import converter
+from print_dot import print_dot
 
 
 def get_graph(definition = "Дерево", n = 2):
@@ -35,9 +36,11 @@ if __name__ == '__main__':
 		prototype_objects.append(x)
 	
 	# конвертер из файла
-	# prototype_objects = converter('школа.dot')
+	prototype_objects = converter('graph_for_article.dot')
 
-	# print(prototype_objects)
+	print(prototype_objects)
+
+	# print_dot(prototype_objects)
 
 	# write_to_file(prototype_objects, 'школа')
 	write_to_file(prototype_objects, 'дерево')
